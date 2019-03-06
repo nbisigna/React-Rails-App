@@ -56,10 +56,16 @@ class Posts extends Component {
   }
 
   deletePost(post) {
-    fetch(`/posts/${post.id}.json`)
-      .then(res => res.json())
-      .then(json => {
-        console.log(json);
+    fetch(`/posts/${post.id}.json`, { method: 'DELETE' })
+      .then(() => {
+        let posts = this.state.posts;
+        posts = posts.filter(item => {
+          return item.id != post.id;
+        });
+        this.setState({ posts });
+      })
+      .catch(err => {
+        console.log(err);
       });
   }
 
