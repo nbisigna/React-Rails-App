@@ -20,7 +20,7 @@ class Posts extends Component {
   }
 
   getPosts() {
-    fetch('http://localhost:3000/posts.json')
+    fetch('/posts.json')
       .then(res => res.json())
       .then(json => {
         this.setState({
@@ -37,7 +37,7 @@ class Posts extends Component {
   }
 
   postPost(post) {
-    fetch('http://localhost:3000/posts.json', {
+    fetch('/posts.json', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -56,7 +56,7 @@ class Posts extends Component {
   }
 
   deletePost(post) {
-    fetch(`http://localhost:3000/posts/${post.id}.json`)
+    fetch(`/posts/${post.id}.json`)
       .then(res => res.json())
       .then(json => {
         console.log(json);
@@ -79,7 +79,7 @@ class Posts extends Component {
   }
 
   updatePost(post) {
-    fetch(`http://localhost:3000/posts/${post.id}.json`, {
+    fetch(`/posts/${post.id}.json`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ post: post })
